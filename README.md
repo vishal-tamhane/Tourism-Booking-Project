@@ -9,6 +9,7 @@ Project_Highway_Delite/
 ├── Backend/          # Node.js + Express + PostgreSQL API
 └── Fronted/         # React + Vite + Tailwind CSS
 ```
+<img width="1919" height="1023" alt="image" src="https://github.com/user-attachments/assets/79c64766-0d71-4462-8dd4-cb4f94c7d720" />
 
 ## 🚀 Getting Started
 
@@ -91,6 +92,15 @@ Frontend will run at: `http://localhost:5173`
 - 📱 **Responsive Design** - Works on mobile, tablet, and desktop
 - 💰 **Dynamic Pricing** - Automatic tax calculation (18%)
 - ✅ **Booking Validation** - Prevents double-booking and validates availability
+
+<img width="1901" height="1023" alt="image" src="https://github.com/user-attachments/assets/9f2d3b95-e894-4c9b-8eb4-d941373e1cce" />
+<img width="1904" height="1019" alt="image" src="https://github.com/user-attachments/assets/5f319240-bd2d-4e23-8fae-7d6f34128ebb" />
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/dae57a8f-021e-4226-83db-4e0c6d1638c7" />
+<img width="1919" height="1023" alt="image" src="https://github.com/user-attachments/assets/543446cb-6d48-4f0f-b87c-38bc3a32bbf7" />
+<img width="834" height="937" alt="image" src="https://github.com/user-attachments/assets/4653d26b-4439-4111-ba6e-3fc927672dcd" />
+
+
+
 
 ---
 
