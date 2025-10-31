@@ -2,113 +2,105 @@ export const activities = [
   {
     id: 1,
     name: 'Kayaking',
-    location: 'Uttar Karnataka',
-    description: 'Experience the serene beauty of kayaking through calm waters. Our expert guides will take you on an unforgettable journey surrounded by lush greenery and wildlife.',
-    price: 999,
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop',
+    location: 'Pawna Lake, Lonavala',
+    description: 'Experience the thrill of kayaking in the serene waters of Pawna Lake. Perfect for beginners and experienced paddlers alike.',
+    price: 1999,
+    image: 'https://via.placeholder.com/800x600/4A90E2/FFFFFF?text=Kayaking',
     breakdown: [
-      { label: 'Entrance Fee', amount: 150 },
-      { label: 'Guide', amount: 300 },
-      { label: 'Equipment', amount: 400 },
-      { label: 'Total', amount: 850 }
+      { label: 'Kayak Rental', amount: 1200 },
+      { label: 'Safety Equipment', amount: 300 },
+      { label: 'Instructor Fee', amount: 499 }
     ]
   },
   {
     id: 2,
-    name: 'Nandi Hills Sunrise',
-    location: 'Bangalore',
-    description: 'Experience breathtaking sunrise views from Nandi Hills. Perfect for nature lovers and photography enthusiasts. Witness the golden hour magic.',
-    price: 699,
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+    name: 'Paragliding',
+    location: 'Kamshet, Pune',
+    description: 'Soar through the skies and experience breathtaking aerial views of the Western Ghats. Professional pilots ensure a safe and memorable flight.',
+    price: 3500,
+    image: 'https://via.placeholder.com/800x600/E74C3C/FFFFFF?text=Paragliding',
     breakdown: [
-      { label: 'Transportation', amount: 300 },
-      { label: 'Guide', amount: 200 },
-      { label: 'Breakfast', amount: 150 },
-      { label: 'Total', amount: 650 }
+      { label: 'Flight Fee', amount: 2800 },
+      { label: 'Safety Gear', amount: 400 },
+      { label: 'Video Recording', amount: 300 }
     ]
   },
   {
     id: 3,
-    name: 'Coffee Trail',
-    location: 'Coorg',
-    description: 'Explore lush coffee plantations in Coorg. Learn about coffee cultivation and enjoy fresh brews. Walk through aromatic estates.',
-    price: 799,
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop',
+    name: 'Trekking',
+    location: 'Rajmachi Fort, Lonavala',
+    description: 'Embark on an adventurous trek to the historic Rajmachi Fort. Witness stunning sunrise views and explore ancient ruins.',
+    price: 1499,
+    image: 'https://via.placeholder.com/800x600/27AE60/FFFFFF?text=Trekking',
     breakdown: [
-      { label: 'Plantation Tour', amount: 400 },
-      { label: 'Coffee Tasting', amount: 200 },
-      { label: 'Lunch', amount: 150 },
-      { label: 'Total', amount: 750 }
+      { label: 'Guide Fee', amount: 800 },
+      { label: 'Entry Ticket', amount: 200 },
+      { label: 'Equipment', amount: 499 }
     ]
   },
   {
     id: 4,
-    name: 'River Rafting',
-    location: 'Dandeli',
-    description: 'Join us for thrilling white water rafting adventures. Safety first with professional guides and quality equipment included.',
-    price: 999,
-    image: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=400&h=300&fit=crop',
+    name: 'Camping',
+    location: 'Mulshi, Pune',
+    description: 'Escape to nature with overnight camping under the stars. Includes bonfire, BBQ, and comfortable tents with scenic views.',
+    price: 2499,
+    image: 'https://via.placeholder.com/800x600/F39C12/FFFFFF?text=Camping',
     breakdown: [
-      { label: 'Equipment Rental', amount: 400 },
-      { label: 'Professional Guide', amount: 350 },
-      { label: 'Safety Gear', amount: 200 },
-      { label: 'Total', amount: 950 }
+      { label: 'Tent & Bedding', amount: 1200 },
+      { label: 'Meals (Dinner & Breakfast)', amount: 800 },
+      { label: 'Bonfire & Activities', amount: 499 }
     ]
   },
   {
     id: 5,
-    name: 'Sunrise Trek',
-    location: 'Nandi Hills',
-    description: 'Catch the golden hour at Nandi Hills. Trek early morning and witness spectacular views from the top. Perfect for fitness enthusiasts.',
-    price: 899,
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+    name: 'Waterfall Rappelling',
+    location: 'Bhivpuri, Karjat',
+    description: 'Descend through cascading waterfalls in this ultimate adrenaline adventure. Expert supervision and premium safety gear provided.',
+    price: 2799,
+    image: 'https://via.placeholder.com/800x600/9B59B6/FFFFFF?text=Waterfall+Rappelling',
     breakdown: [
-      { label: 'Trek Guide', amount: 400 },
-      { label: 'Entry Fee', amount: 200 },
-      { label: 'Refreshments', amount: 250 },
-      { label: 'Total', amount: 850 }
+      { label: 'Rappelling Equipment', amount: 1500 },
+      { label: 'Expert Supervision', amount: 900 },
+      { label: 'Safety Certification', amount: 399 }
     ]
   },
   {
     id: 6,
-    name: 'Boat Cruise',
-    location: 'Goa',
-    description: 'Cruise along pristine waters of Goa. Enjoy sunset views and coastal beauty. Perfect for families and couples.',
-    price: 999,
-    image: 'https://images.unsplash.com/photo-1544551763-92ed1c6c2c82?w=400&h=300&fit=crop',
+    name: 'Rock Climbing',
+    location: 'Sandhan Valley, Ahmednagar',
+    description: 'Challenge yourself with rock climbing on natural rock formations. Suitable for all skill levels with professional instructors.',
+    price: 1899,
+    image: 'https://via.placeholder.com/800x600/34495E/FFFFFF?text=Rock+Climbing',
     breakdown: [
-      { label: 'Boat Rental', amount: 500 },
-      { label: 'Captain Fee', amount: 300 },
-      { label: 'Snacks', amount: 150 },
-      { label: 'Total', amount: 950 }
+      { label: 'Climbing Gear', amount: 1000 },
+      { label: 'Instructor Fee', amount: 600 },
+      { label: 'Safety Equipment', amount: 299 }
     ]
   },
   {
     id: 7,
-    name: 'Bungee Jumping',
-    location: 'Rishikesh',
-    description: 'Experience the ultimate adrenaline rush. Jump from heights with complete safety gear and professional supervision.',
-    price: 999,
-    image: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=300&fit=crop',
+    name: 'Hot Air Balloon',
+    location: 'Lonavala',
+    description: 'Float peacefully above the Western Ghats in a hot air balloon. Enjoy panoramic views and a champagne celebration after landing.',
+    price: 8999,
+    image: 'https://via.placeholder.com/800x600/E67E22/FFFFFF?text=Hot+Air+Balloon',
     breakdown: [
-      { label: 'Jump Fee', amount: 600 },
-      { label: 'Safety Equipment', amount: 250 },
-      { label: 'Video Recording', amount: 100 },
-      { label: 'Total', amount: 950 }
+      { label: 'Balloon Flight', amount: 7500 },
+      { label: 'Pilot & Crew', amount: 1000 },
+      { label: 'Champagne Celebration', amount: 499 }
     ]
   },
   {
     id: 8,
-    name: 'Coffee Estate Tour',
-    location: 'Chikmagalur',
-    description: 'Walk through aromatic coffee estates. Taste fresh coffee and learn about processing. Enjoy the peaceful hill station atmosphere.',
+    name: 'Zip Lining',
+    location: 'Della Adventure Park, Lonavala',
+    description: 'Experience the rush of flying through the air on India\'s longest zip line. Safety-certified equipment and professional guidance.',
     price: 1299,
-    image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop',
+    image: 'https://via.placeholder.com/800x600/16A085/FFFFFF?text=Zip+Lining',
     breakdown: [
-      { label: 'Estate Tour', amount: 600 },
-      { label: 'Coffee Tasting', amount: 300 },
-      { label: 'Lunch & Snacks', amount: 350 },
-      { label: 'Total', amount: 1250 }
+      { label: 'Zip Line Access', amount: 800 },
+      { label: 'Safety Harness', amount: 300 },
+      { label: 'Instructor', amount: 199 }
     ]
   }
 ];

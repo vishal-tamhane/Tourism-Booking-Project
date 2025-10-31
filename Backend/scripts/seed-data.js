@@ -7,7 +7,7 @@ const experiences = [
     location: 'Pawna Lake, Lonavala',
     description: 'Experience the thrill of kayaking in the serene waters of Pawna Lake. Perfect for beginners and experienced paddlers alike.',
     price: 1999,
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800',
+    image: 'https://via.placeholder.com/800x600/4A90E2/FFFFFF?text=Kayaking',
     breakdown: [
       { label: 'Kayak Rental', amount: 1200 },
       { label: 'Safety Equipment', amount: 300 },
@@ -20,7 +20,7 @@ const experiences = [
     location: 'Kamshet, Pune',
     description: 'Soar through the skies and experience breathtaking aerial views of the Western Ghats. Professional pilots ensure a safe and memorable flight.',
     price: 3500,
-    image: 'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=800',
+    image: 'https://via.placeholder.com/800x600/E74C3C/FFFFFF?text=Paragliding',
     breakdown: [
       { label: 'Flight Fee', amount: 2800 },
       { label: 'Safety Gear', amount: 400 },
@@ -33,7 +33,7 @@ const experiences = [
     location: 'Rajmachi Fort, Lonavala',
     description: 'Embark on an adventurous trek to the historic Rajmachi Fort. Witness stunning sunrise views and explore ancient ruins.',
     price: 1499,
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800',
+    image: 'https://via.placeholder.com/800x600/27AE60/FFFFFF?text=Trekking',
     breakdown: [
       { label: 'Guide Fee', amount: 800 },
       { label: 'Entry Ticket', amount: 200 },
@@ -46,7 +46,7 @@ const experiences = [
     location: 'Mulshi, Pune',
     description: 'Escape to nature with overnight camping under the stars. Includes bonfire, BBQ, and comfortable tents with scenic views.',
     price: 2499,
-    image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800',
+    image: 'https://via.placeholder.com/800x600/F39C12/FFFFFF?text=Camping',
     breakdown: [
       { label: 'Tent & Bedding', amount: 1200 },
       { label: 'Meals (Dinner & Breakfast)', amount: 800 },
@@ -59,7 +59,7 @@ const experiences = [
     location: 'Bhivpuri, Karjat',
     description: 'Descend through cascading waterfalls in this ultimate adrenaline adventure. Expert supervision and premium safety gear provided.',
     price: 2799,
-    image: 'https://images.unsplash.com/photo-1622495805048-e8c5d2b66d26?w=800',
+    image: 'https://via.placeholder.com/800x600/9B59B6/FFFFFF?text=Waterfall+Rappelling',
     breakdown: [
       { label: 'Rappelling Equipment', amount: 1500 },
       { label: 'Expert Supervision', amount: 900 },
@@ -72,7 +72,7 @@ const experiences = [
     location: 'Sandhan Valley, Ahmednagar',
     description: 'Challenge yourself with rock climbing on natural rock formations. Suitable for all skill levels with professional instructors.',
     price: 1899,
-    image: 'https://images.unsplash.com/photo-1522163182402-834f871fd851?w=800',
+    image: 'https://via.placeholder.com/800x600/34495E/FFFFFF?text=Rock+Climbing',
     breakdown: [
       { label: 'Climbing Gear', amount: 1000 },
       { label: 'Instructor Fee', amount: 600 },
@@ -85,7 +85,7 @@ const experiences = [
     location: 'Lonavala',
     description: 'Float peacefully above the Western Ghats in a hot air balloon. Enjoy panoramic views and a champagne celebration after landing.',
     price: 8999,
-    image: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800',
+    image: 'https://via.placeholder.com/800x600/E67E22/FFFFFF?text=Hot+Air+Balloon',
     breakdown: [
       { label: 'Balloon Flight', amount: 7500 },
       { label: 'Pilot & Crew', amount: 1000 },
@@ -98,7 +98,7 @@ const experiences = [
     location: 'Della Adventure Park, Lonavala',
     description: 'Experience the rush of flying through the air on India\'s longest zip line. Safety-certified equipment and professional guidance.',
     price: 1299,
-    image: 'https://images.unsplash.com/photo-1622495805388-c2a7d7c9c87d?w=800',
+    image: 'https://via.placeholder.com/800x600/16A085/FFFFFF?text=Zip+Lining',
     breakdown: [
       { label: 'Zip Line Access', amount: 800 },
       { label: 'Safety Harness', amount: 300 },

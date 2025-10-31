@@ -5,14 +5,26 @@ function Confirmation() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const bookingDetails = location.state?.bookingDetails;
+  const booking = location.state?.booking;
+  const activity = location.state?.activity;
   const formData = location.state?.formData;
 
-  // Default values if no data is passed
-  const activity = bookingDetails?.activity || 'Activity';
-  const date = bookingDetails?.date || new Date().toISOString().split('T')[0];
-  const time = bookingDetails?.time || '09:00 AM';
-  const total = bookingDetails?.breakdown?.find(i => i.label === 'Total')?.amount || 900;
+  if (!booking || !activity) {
+    return (
+      <div className="min-h-screen bg-gray-100">
+        <Header showSearch={false} />
+        <div className="max-w-7xl mx-auto px-4 md:px-10 py-10 text-center">
+          <h2 className="text-2xl font-bold text-black">No booking information found</h2>
+          <button 
+            onClick={() => navigate('/')}
+            className="mt-4 px-6 py-3 bg-primary hover:bg-primary-hover rounded font-semibold text-black transition-colors"
+          >
+            Back to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -38,23 +50,41 @@ function Confirmation() {
             <h3 className="text-xl font-semibold mb-6 text-center text-black">Booking Details</h3>
             <div className="flex justify-between py-4 border-b border-gray-300">
               <span className="text-black">Booking ID:</span>
-              <strong className="text-black">HWD-{Math.random().toString(36).substr(2, 9).toUpperCase()}</strong>
+              <strong className="text-black">{booking.booking_id}</strong>
             </div>
             <div className="flex justify-between py-4 border-b border-gray-300">
               <span className="text-black">Activity:</span>
-              <strong className="text-black">{activity}</strong>
+              <strong className="text-black">{activity.name}</strong>
             </div>
             <div className="flex justify-between py-4 border-b border-gray-300">
               <span className="text-black">Date:</span>
-              <strong className="text-black">{new Date(date).toLocaleDateString()}</strong>
+              <strong className="text-black">{new Date(booking.booking_date).toLocaleDateString()}</strong>
             </div>
             <div className="flex justify-between py-4 border-b border-gray-300">
               <span className="text-black">Time:</span>
-              <strong className="text-black">{time}</strong>
+              <strong className="text-black">{booking.time_slot}</strong>
             </div>
+            <div className="flex justify-between py-4 border-b border-gray-300">
+              <span className="text-black">Name:</span>
+              <strong className="text-black">{booking.customer_name}</strong>
+            </div>
+            <div className="flex justify-between py-4 border-b border-gray-300">
+              <span className="text-black">Email:</span>
+              <strong className="text-black">{booking.customer_email}</strong>
+            </div>
+            <div className="flex justify-between py-4 border-b border-gray-300">
+              <span className="text-black">Payment Method:</span>
+              <strong className="text-black">{booking.payment_method}</strong>
+            </div>
+            {booking.promo_code && (
+              <div className="flex justify-between py-4 border-b border-gray-300">
+                <span className="text-green-600">Promo Code Applied:</span>
+                <strong className="text-green-600">{booking.promo_code} (- ₹{parseFloat(booking.discount).toFixed(2)})</strong>
+              </div>
+            )}
             <div className="flex justify-between py-4">
               <span className="text-black">Total Amount:</span>
-              <strong className="text-black">₹{total}</strong>
+              <strong className="text-black text-xl">₹{parseFloat(booking.total_amount).toFixed(2)}</strong>
             </div>
           </div>
 

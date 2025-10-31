@@ -1,21 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
-import { getActivityById } from '../data/activities';
+import { API_ENDPOINTS, apiCall, getActivityImage } from '../config/api';
 
 function SelectDate() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [selectedDate, setSelectedDate] = useState('');
+  const [activity, setActivity] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const activity = getActivityById(id);
+  useEffect(() => {
+    fetchActivity();
+  }, [id]);
 
-  if (!activity) {
+  const fetchActivity = async () => {
+    try {
+      setLoading(true);
+      const response = await apiCall(API_ENDPOINTS.experienceById(id));
+      setActivity(response.data);
+      setError(null);
+    } catch (err) {
+      setError('Failed to load activity details.');
+      console.error('Error fetching activity:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-100">
         <Header showSearch={false} />
         <div className="max-w-7xl mx-auto px-4 md:px-10 py-10 text-center">
-          <h2 className="text-2xl font-bold text-black">Activity not found</h2>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+          <p className="mt-4 text-black text-lg">Loading activity...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !activity) {
+    return (
+      <div className="min-h-screen bg-gray-100">
+        <Header showSearch={false} />
+        <div className="max-w-7xl mx-auto px-4 md:px-10 py-10 text-center">
+          <h2 className="text-2xl font-bold text-black">{error || 'Activity not found'}</h2>
           <button 
             onClick={() => navigate('/')}
             className="mt-4 px-6 py-3 bg-primary hover:bg-primary-hover rounded font-semibold text-black transition-colors"
@@ -68,7 +99,7 @@ function SelectDate() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 bg-white rounded-lg p-6 md:p-8">
             <div className="relative h-64 rounded-lg overflow-hidden mb-6">
-              <img src={activity.image} alt={activity.name} className="w-full h-full object-cover" />
+              <img src={getActivityImage(activity.id)} alt={activity.name} className="w-full h-full object-cover" />
               <span className="absolute top-2 right-2 bg-primary px-3 py-1 rounded text-xs font-semibold text-black">
                 New
               </span>
