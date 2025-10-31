@@ -1,0 +1,72 @@
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.activity-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.activity-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.activity-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activity-content {
+  padding: 20px;
+}
+
+.activity-content h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.location {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.activity-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
