@@ -13,9 +13,7 @@ const bookingValidation = [
   body('customerName').trim().notEmpty().withMessage('Customer name is required'),
   body('customerEmail').isEmail().withMessage('Valid email is required'),
   body('customerPhone').matches(/^[0-9]{10}$/).withMessage('Valid 10-digit phone number is required'),
-  body('paymentMethod').isIn(['Visa', 'Mastercard', 'UPI', 'Net Banking']).withMessage('Valid payment method is required'),
-  body('subtotal').isFloat({ min: 0 }).withMessage('Valid subtotal is required'),
-  body('tax').isFloat({ min: 0 }).withMessage('Valid tax amount is required'),
+  body('paymentMethod').notEmpty().withMessage('Payment method is required'),
   body('totalAmount').isFloat({ min: 0 }).withMessage('Valid total amount is required'),
 ];
 
@@ -38,13 +36,8 @@ router.post('/', bookingValidation, async (req, res, next) => {
       customerName: req.body.customerName,
       customerEmail: req.body.customerEmail,
       customerPhone: req.body.customerPhone,
-      address: req.body.address,
-      city: req.body.city,
-      state: req.body.state,
-      zipCode: req.body.zipCode,
+      numberOfPeople: 1, // Default to 1 person
       paymentMethod: req.body.paymentMethod,
-      subtotal: req.body.subtotal,
-      tax: req.body.tax,
       totalAmount: req.body.totalAmount,
       promoCode: req.body.promoCode,
       discount: req.body.discount || 0
