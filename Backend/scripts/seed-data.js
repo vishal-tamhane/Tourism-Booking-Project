@@ -166,7 +166,7 @@ async function seedDatabase() {
     // Insert experiences and price breakdowns
     for (const exp of experiences) {
       const expResult = await client.query(
-        `INSERT INTO experiences (id, name, location, description, price, image) 
+        `INSERT INTO experiences (id, name, location, description, base_price, image) 
          VALUES ($1, $2, $3, $4, $5, $6) 
          RETURNING id`,
         [exp.id, exp.name, exp.location, exp.description, exp.price, exp.image]
@@ -177,7 +177,7 @@ async function seedDatabase() {
       // Insert price breakdowns
       for (const item of exp.breakdown) {
         await client.query(
-          `INSERT INTO price_breakdowns (experience_id, label, amount) 
+          `INSERT INTO price_breakdowns (experience_id, person_type, price) 
            VALUES ($1, $2, $3)`,
           [experienceId, item.label, item.amount]
         );
@@ -186,7 +186,7 @@ async function seedDatabase() {
       // Insert time slots for this experience
       for (const slot of timeSlots) {
         await client.query(
-          `INSERT INTO time_slots (experience_id, slot_time, max_capacity) 
+          `INSERT INTO time_slots (experience_id, slot_time, available_seats) 
            VALUES ($1, $2, $3)`,
           [experienceId, slot, 20]
         );
@@ -199,7 +199,7 @@ async function seedDatabase() {
     for (const promo of promoCodes) {
       await client.query(
         `INSERT INTO promo_codes (
-          code, discount_type, discount_value, min_amount, max_discount,
+          code, discount_type, discount_value, min_order_amount, max_discount,
           valid_from, valid_until, usage_limit, is_active
         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
         [

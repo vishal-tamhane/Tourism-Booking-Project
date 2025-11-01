@@ -8,6 +8,7 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "db:setup": "node scripts/setup-database.js",
+    "db:setup-neon": "node scripts/setup-neon-database.js",
     "db:seed": "node scripts/seed-data.js"
   },
   "keywords": ["tourism", "booking", "express", "postgresql"],

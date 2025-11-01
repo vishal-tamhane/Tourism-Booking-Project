@@ -6,7 +6,7 @@ class Experience {
       SELECT e.*, 
         COALESCE(
           json_agg(
-            json_build_object('label', pb.label, 'amount', pb.amount)
+            json_build_object('label', pb.person_type, 'amount', pb.price)
             ORDER BY pb.id
           ) FILTER (WHERE pb.id IS NOT NULL),
           '[]'
@@ -26,7 +26,7 @@ class Experience {
       SELECT e.*, 
         COALESCE(
           json_agg(
-            json_build_object('label', pb.label, 'amount', pb.amount)
+            json_build_object('label', pb.person_type, 'amount', pb.price)
             ORDER BY pb.id
           ) FILTER (WHERE pb.id IS NOT NULL),
           '[]'
@@ -43,7 +43,7 @@ class Experience {
 
   static async checkAvailability(experienceId, date, timeSlot) {
     const query = `
-      SELECT COUNT(*) as booking_count, ts.max_capacity
+      SELECT COUNT(b.id) as booking_count, ts.available_seats
       FROM time_slots ts
       LEFT JOIN bookings b ON b.experience_id = ts.experience_id 
         AND b.time_slot = ts.slot_time 
@@ -51,7 +51,7 @@ class Experience {
         AND b.status != 'cancelled'
       WHERE ts.experience_id = $1 
         AND ts.slot_time = $3
-      GROUP BY ts.max_capacity
+      GROUP BY ts.available_seats
     `;
     
     const result = await pool.query(query, [experienceId, date, timeSlot]);
@@ -60,12 +60,12 @@ class Experience {
       return { available: false, message: 'Time slot not found' };
     }
     
-    const { booking_count, max_capacity } = result.rows[0];
-    const available = parseInt(booking_count) < parseInt(max_capacity);
+    const { booking_count, available_seats } = result.rows[0];
+    const available = parseInt(booking_count) < parseInt(available_seats);
     
     return {
       available,
-      spotsLeft: max_capacity - booking_count,
+      spotsLeft: available_seats - booking_count,
       message: available ? 'Available' : 'Fully booked'
     };
   }

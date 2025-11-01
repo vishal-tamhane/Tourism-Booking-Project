@@ -12,12 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [
-  'http://localhost:5173', 
-  'http://localhost:5174',
-  'http://127.0.0.1:5500',
-  'http://localhost:5500'
-];
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') 
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -54,7 +49,7 @@ app.get('/api/db-status', async (req, res) => {
       status: 'connected',
       message: 'Database connection successful',
       timestamp: result.rows[0].now,
-      database: process.env.DB_NAME
+      database: process.env.DATABASE_URL ? 'Neon PostgreSQL' : (process.env.DB_NAME || 'Unknown')
     });
   } catch (error) {
     res.status(500).json({
@@ -91,18 +86,11 @@ async function checkDatabaseConnection() {
   try {
     const result = await pool.query('SELECT NOW()');
     console.log('✅ Database connected successfully');
-    console.log(`📦 Database: ${process.env.DB_NAME}`);
-    console.log(`🕐 Server time: ${result.rows[0].now}`);
+   
     return true;
   } catch (error) {
     console.error('❌ Database connection failed');
-    console.error('Error:', error.message);
-    console.error('\n⚠️  Please check your database configuration in .env file:');
-    console.error(`   - DB_HOST: ${process.env.DB_HOST}`);
-    console.error(`   - DB_PORT: ${process.env.DB_PORT}`);
-    console.error(`   - DB_NAME: ${process.env.DB_NAME}`);
-    console.error(`   - DB_USER: ${process.env.DB_USER}`);
-    console.error('\n💡 Make sure PostgreSQL is running and credentials are correct.\n');
+    
     return false;
   }
 }

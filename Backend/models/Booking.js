@@ -28,14 +28,14 @@ class Booking {
       
       // Check availability
       const availabilityCheck = await client.query(
-        `SELECT COUNT(*) as count, ts.max_capacity
+        `SELECT COUNT(*) as count, ts.available_seats
          FROM time_slots ts
          LEFT JOIN bookings b ON b.experience_id = ts.experience_id 
            AND b.time_slot = ts.slot_time 
            AND b.booking_date = $2
            AND b.status != 'cancelled'
          WHERE ts.experience_id = $1 AND ts.slot_time = $3
-         GROUP BY ts.max_capacity`,
+         GROUP BY ts.available_seats`,
         [bookingData.experienceId, bookingData.date, bookingData.timeSlot]
       );
       
@@ -43,8 +43,8 @@ class Booking {
         throw new Error('Time slot not available');
       }
       
-      const { count, max_capacity } = availabilityCheck.rows[0];
-      if (parseInt(count) >= parseInt(max_capacity)) {
+      const { count, available_seats } = availabilityCheck.rows[0];
+      if (parseInt(count) >= parseInt(available_seats)) {
         throw new Error('This time slot is fully booked');
       }
       
@@ -54,10 +54,9 @@ class Booking {
         INSERT INTO bookings (
           booking_id, experience_id, booking_date, time_slot,
           customer_name, customer_email, customer_phone,
-          address, city, state, zip_code,
-          payment_method, subtotal, tax, total_amount,
+          number_of_people, payment_method, total_amount,
           promo_code, discount, status
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
         RETURNING *
       `;
       
@@ -69,13 +68,8 @@ class Booking {
         bookingData.customerName,
         bookingData.customerEmail,
         bookingData.customerPhone,
-        bookingData.address || null,
-        bookingData.city || null,
-        bookingData.state || null,
-        bookingData.zipCode || null,
+        bookingData.numberOfPeople || 1,
         bookingData.paymentMethod,
-        bookingData.subtotal,
-        bookingData.tax,
         bookingData.totalAmount,
         bookingData.promoCode || null,
         bookingData.discount || 0,

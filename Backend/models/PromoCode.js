@@ -8,7 +8,7 @@ class PromoCode {
         AND is_active = true
         AND valid_from <= CURRENT_DATE
         AND valid_until >= CURRENT_DATE
-        AND (usage_limit IS NULL OR used_count < usage_limit)
+        AND (usage_limit IS NULL OR times_used < usage_limit)
     `;
     
     const result = await pool.query(query, [code.toUpperCase()]);
@@ -23,10 +23,10 @@ class PromoCode {
     const promo = result.rows[0];
     
     // Check minimum amount
-    if (amount < promo.min_amount) {
+    if (amount < promo.min_order_amount) {
       return {
         valid: false,
-        message: `Minimum order amount of ₹${promo.min_amount} required`
+        message: `Minimum order amount of ₹${parseFloat(promo.min_order_amount).toFixed(2)} required`
       };
     }
     
@@ -52,7 +52,7 @@ class PromoCode {
   static async incrementUsage(code) {
     const query = `
       UPDATE promo_codes
-      SET used_count = used_count + 1
+      SET times_used = times_used + 1
       WHERE code = $1
     `;
     
