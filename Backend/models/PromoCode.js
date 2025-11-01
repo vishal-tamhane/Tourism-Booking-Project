@@ -22,24 +22,32 @@ class PromoCode {
     
     const promo = result.rows[0];
     
+    // Convert string values to numbers
+    const minOrderAmount = parseFloat(promo.min_order_amount);
+    const discountValue = parseFloat(promo.discount_value);
+    const maxDiscount = promo.max_discount ? parseFloat(promo.max_discount) : null;
+    
     // Check minimum amount
-    if (amount < promo.min_order_amount) {
+    if (amount < minOrderAmount) {
       return {
         valid: false,
-        message: `Minimum order amount of ₹${parseFloat(promo.min_order_amount).toFixed(2)} required`
+        message: `Minimum order amount of ₹${minOrderAmount.toFixed(2)} required`
       };
     }
     
     // Calculate discount
     let discount = 0;
     if (promo.discount_type === 'percentage') {
-      discount = (amount * promo.discount_value) / 100;
-      if (promo.max_discount && discount > promo.max_discount) {
-        discount = promo.max_discount;
+      discount = (amount * discountValue) / 100;
+      if (maxDiscount && discount > maxDiscount) {
+        discount = maxDiscount;
       }
     } else {
-      discount = promo.discount_value;
+      discount = discountValue;
     }
+    
+    // Ensure discount is a number
+    discount = parseFloat(discount) || 0;
     
     return {
       valid: true,
